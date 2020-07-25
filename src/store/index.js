@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cart:[],
+    cart:[53363],
     products:[
       {
         name : "Crewneck T-Shirt",
@@ -82,11 +82,43 @@ export default new Vuex.Store({
       },
     ]
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    addToCart (state, payload){
+      state.cart.push(Number(payload))
+    },
+    decrementProductInventory(state, payload){
+      let product = state.products.find(product => product.id === Number(payload)) // mengurangi jumlah barang yang ada di inventory sesuai dengan id yang ditambahkan ke cart
+      product.quantity--;
+    },
+    removeFromCart (state, payload){
+      let indexToDelete = state.cart.indexOf(Number(payload));
+      state.cart.splice(indexToDelete, 1)
+    },
+    incrementProductInventory(state, payload){
+      let product = state.products.find(product => product.id === Number(payload)) // mengurangi jumlah barang yang ada di inventory sesuai dengan id yang ditambahkan ke cart
+      product.quantity++;
+    }
+  },
+  actions: {
+    addToCart({ commit }, payload){
+      commit('addToCart', payload) //menambahkan jumlah cart
+      commit('decrementProductInventory', payload) //mengurangi produk dalam inventory
+    },
+    removeFromCart({commit}, payload){
+      commit('removeFromCart', payload)
+      commit('incrementProductInventory', payload)
+    }
+  },
   getters:{
     product: (state) => (id) => {
       return state.products.filter(p => p.id === Number(id))[0]
+    },
+    cartItems: (state) => {
+      return state.cart.map(
+        itemId => state.products.find(
+          product => product.id === itemId
+        )
+      )
     }
   },
   modules: {}
