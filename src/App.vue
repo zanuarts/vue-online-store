@@ -30,35 +30,32 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  }
+  #nav {
+    padding: 30px;
+    a {
+      font-weight: bold;
+      color: #2c3e50;
+      &.router-link-exact-active {
+        color: #42b983;
+      }
     }
   }
-}
-.nav-items{
-  justify-content: flex-end;
-  display: flex;
-}
-.nav-items__item{
-  margin-left: 1rem;
-  position: relative;
-}
-ul{
-  padding-left: 0;
-  list-style: none;
-}
+  .nav-items{
+    justify-content: flex-end;
+    display: flex;
+  }
+  .nav-items__item{
+    margin-left: 1rem;
+    position: relative;
+  }
+  ul{
+    padding-left: 0;
+    list-style: none;
+  }
 </style>
