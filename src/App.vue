@@ -3,9 +3,10 @@
     <div id="nav" class="wrapper flex-col flex-col--align-center">
       <h1 class="flex-col--2">MyStore</h1>
       <div class="flex-col--2 nav-items">
-        <router-link to="/" class="nav-items__item">Home</router-link> |
-        <router-link to="/cart" class="nav-items__item">
-          Cart
+        <router-link to="/" class="nav-items__item">Home</router-link>
+        <router-link :to="{ name:'gender-overview', params: { gender: 'women'} }" class="nav-items__item">Women</router-link>
+        <router-link :to="{ name:'gender-overview', params: { gender: 'men'} }" class="nav-items__item">Men</router-link>
+        <router-link to="/cart" class="nav-items__item">Cart
           <counter-badge :count="cartCount"></counter-badge>
         </router-link>
       </div>

@@ -3,7 +3,7 @@
     <section class="wrapper">
       <h2>Featured Items</h2>
       <ul class="featured-items">
-        <li v-for="product in products" :key="product.id" class="featured-items__item">
+        <li v-for="product in featuredProducts" :key="product.id" class="featured-items__item">
           <router-link :to="{ name: 'product', params: { id: product.id }}">
             <img class="product-image" :src="makeImagePath(product)" alt="">
             <p class="product-title">{{ product.name }}</p>
@@ -22,8 +22,8 @@ export default {
   name: 'home',
   mixins:[imagePath],
   computed:{
-    products: function(){
-      return this.$store.state.products
+    featuredProducts: function(){
+      return this.$store.getters.featuredProducts.slice(0,3)
     }
   },
   methods:{
